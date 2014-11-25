@@ -1,104 +1,107 @@
-<!-- saved from url=(0014)about:internet -->
+<!doctype html>
 <html lang="en">
-
-<!-- 
-Smart developers always View Source. 
-
-This application was built using Adobe Flex, an open source framework
-for building rich Internet applications that get delivered via the
-Flash Player or to desktops via Adobe AIR. 
-
-Learn more about Flex at http://flex.org 
-// -->
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <title>jQuery UI Droppable - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script src="https://raw.githubusercontent.com/godswearhats/jquery-ui-rotatable/master/jquery.ui.rotatable.min.js" ></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  
+  <style>
+  #draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  #droppable { width: 150px; height: 500px; padding: 0.5em; float: left; margin: 10px; }
+ 
+   <style>
+            #draggable-zone {
+                /*background: #000 url(thumbimages/01.jpg) 0 0 no-repeat;*/
+                border:     3px solid #000;
+                height:     400px;
+                width:      400px;
+            }
+            .ui-wrapper {
+                overflow:   visible ;
+            }
+            .ui-resizable-handle {
+                background:    #f5dc58;
+                border:        1px solid #FFF;
+                z-index:    2;
+            }
+            .ui-rotatable-handle {
+                background:    #f5dc58;
+                border:        1px solid #FFF;
+                border-radius: 5px;
+                        -moz-border-radius:    5px;
+                        -o-border-radius:      5px;
+                        -webkit-border-radius: 5px;
+                cursor:        pointer;
+                height:        10px;
+                left:          50%;
+                margin:        0 0 0 -5px;
+                position:      absolute;
+                top:           -5px;
+                width:         10px;
+            }
+            
+			#droppable
+ { width: 200px; height: 500px; padding-left:10px;float:right margin-bottom:500px;  }
+        </style>
+  </style>
+  <script>
+  $(function() {
+    $( "#draggable" ).draggable();
+	
+    $( "#droppable" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Dropped!" );
+      }
+    });
+	
+  });
+  </script>
+  <script type="text/javascript">		
+            $(document).ready(function() {
+                var drWr = $('#draggable-wrapper'),
+				rsWr = $('#resizable-wrapper'),
+                    elem = $('#elem-wrapper');
 
-<!--  BEGIN Browser History required section -->
-<link rel="stylesheet" type="text/css" href="history/history.css" />
-<!--  END Browser History required section -->
-
-<title></title>
-<script src="AC_OETags.js" language="javascript"></script>
-
-<!--  BEGIN Browser History required section -->
-<script src="history/history.js" language="javascript"></script>
-<!--  END Browser History required section -->
-
-<style>
-body { margin: 0px; overflow:hidden }
-</style>
-<script language="JavaScript" type="text/javascript">
-<!--
-// -----------------------------------------------------------------------------
-// Globals
-// Major version of Flash required
-var requiredMajorVersion = 9;
-// Minor version of Flash required
-var requiredMinorVersion = 0;
-// Minor version of Flash required
-var requiredRevision = 124;
-// -----------------------------------------------------------------------------
-// -->
-</script>
+                elem.resizable({
+                        aspectRatio: true,
+                        handles:     'ne, nw, se, sw'
+                });
+                drWr.draggable();
+                elem.parent().rotatable();
+            });
+        </script>
 </head>
+<body>
+ 
+  
+		
+<div id="#draggable-wrapper" class="ui-widget-content">
+  <div id="draggable-zone">
+            <div id="draggable-wrapper"  style="width: 150px; height: 150px; left: 225px; top: 175px;">
+			
+                <div id="resizable-wrapper" > 				
+                    <img src="sample.jpg" width="150" height="150" id="elem-wrapper" />
+                </div>
+            </div>
+        </div>
+  
+</div>
 
-<body scroll="no">
-<script language="JavaScript" type="text/javascript">
-<!--
-// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
-var hasProductInstall = DetectFlashVer(6, 0, 65);
+ 
+<div id="droppable" class="ui-widget-header resizable-wrapper">
+  
+</div>
 
-// Version check based upon the values defined in globals
-var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
 
-if ( hasProductInstall && !hasRequestedVersion ) {
-	// DO NOT MODIFY THE FOLLOWING FOUR LINES
-	// Location visited after installation is complete if installation is required
-	var MMPlayerType = (isIE == true) ? "ActiveX" : "PlugIn";
-	var MMredirectURL = window.location;
-    document.title = document.title.slice(0, 47) + " - Flash Player Installation";
-    var MMdoctitle = document.title;
+ 
 
-	AC_FL_RunContent(
-		"src", "playerProductInstall",
-		"FlashVars", "MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+"",
-		"width", "100%",
-		"height", "100%",
-		"align", "middle",
-		"id", "PropertyLayout",
-		"quality", "high",
-		"bgcolor", "#869ca7",
-		"name", "PropertyLayout",
-		"allowScriptAccess","sameDomain",
-		"type", "application/x-shockwave-flash",
-		"pluginspage", "http://www.adobe.com/go/getflashplayer",
-		"Flashvars","walk_gate_sizes=400,600,700&swing_gate_sizes=100,300,500&double_gate_sizes=200,300,400&slide_gate_sizes=300,350,450&cantilever_gate_sizes=200,400,600&projectName=myproject&materialGroupName=my material group"
-	);
-} else if (hasRequestedVersion) {
-	// if we've detected an acceptable version
-	// embed the Flash Content SWF when all tests are passed
-	AC_FL_RunContent(
-			"src", "PropertyLayout",
-			"width", "100%",
-			"height", "100%",
-			"align", "middle",
-			"id", "PropertyLayout",
-			"quality", "high",
-			"bgcolor", "#869ca7",
-			"name", "PropertyLayout",
-			"allowScriptAccess","sameDomain",
-			"type", "application/x-shockwave-flash",
-			"pluginspage", "http://www.adobe.com/go/getflashplayer",
-			"Flashvars","walk_gate_sizes=400,600,700&swing_gate_sizes=100,300,500&double_gate_sizes=200,300,400&slide_gate_sizes=300,350,450&cantilever_gate_sizes=200,400,600&projectName=myproject&materialGroupName=my material group"
-	);
-  } else {  // flash is too old or we can't detect the plugin
-    var alternateContent = 'Alternate HTML content should be placed here. '
-  	+ 'This content requires the Adobe Flash Player. '
-   	+ '<a href=http://www.adobe.com/go/getflash/>Get Flash</a>';
-    document.write(alternateContent);  // insert non-flash content
-  }
-// -->
-</script>
 </body>
 </html>

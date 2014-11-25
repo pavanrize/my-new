@@ -1,0 +1,86 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>jQuery UI</title>
+        <link rel="stylesheet" type="text/css" href="jquery.ui.resizable.css" />
+        <style>
+            #draggable-zone {
+                /*background: #000 url(thumbimages/01.jpg) 0 0 no-repeat;*/
+                border:     3px solid #000;
+                height:     500px;
+                
+                
+                width:      600px;
+            }
+            .ui-wrapper {
+                overflow:   visible !important;
+            }
+            .ui-resizable-handle {
+                background:    #f5dc58;
+                border:        1px solid #FFF;
+                z-index:    2;
+            }
+            .ui-rotatable-handle {
+                background:    #f5dc58;
+                border:        1px solid #FFF;
+                border-radius: 5px;
+                        -moz-border-radius:    5px;
+                        -o-border-radius:      5px;
+                        -webkit-border-radius: 5px;
+                cursor:        pointer;
+                height:        10px;
+                left:          50%;
+                margin:        0 0 0 -5px;
+                position:      absolute;
+                top:           -5px;
+                width:         10px;
+            }
+            .ui-rotatable-handle.clone {
+                visibility:  hidden;
+            }
+			#droppable
+ { width: 150px; height: 500px;  float: right; margin-bottom:50px;  }
+        </style>
+    </head>
+    <body>  
+	
+	
+	
+        <div id="draggable-zone">
+            <div id="draggable-wrapper"  style="width: 150px; height: 150px; left: 225px; top: 175px;">
+			
+                <div id="resizable-wrapper" > 				
+                    <img src="sample.jpg" width="150" height="150" alt="?????? ?????" id="elem-wrapper" />
+                </div>
+            </div>
+        </div>
+		
+		
+		<div id="droppable" class="ui-widget-header">
+  
+</div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+        <script src="https://raw.githubusercontent.com/godswearhats/jquery-ui-rotatable/master/jquery.ui.rotatable.min.js" ></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  
+  
+  
+        <script type="text/javascript">		
+            $(document).ready(function() {
+                var drWr = $('#draggable-wrapper'),
+                    rsWr = $('#resizable-wrapper'),
+                    elem = $('#elem-wrapper');
+
+                elem.resizable({
+                        aspectRatio: true,
+                        handles:     'ne, nw, se, sw'
+                });
+                drWr.draggable();
+                elem.parent().rotatable();
+            });
+        </script>
+    </body>
+</html>
